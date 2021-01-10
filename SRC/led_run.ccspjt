@@ -1,0 +1,98 @@
+[Directories]
+Include=
+Library=
+LinkerScript=
+output=
+
+[defines]
+enabled=0
+chip=1
+D1=
+V1=
+buildcount=19
+
+[fileformats]
+forcecoff=1
+debug=4
+error=2
+object=0
+list=0
+scratch=0
+sta=1
+tre=1
+expandtree=0
+allerrors=1
+allwarnings=1
+stayupne=3
+stayupoe=0
+
+[PROJECT]
+Target=led_run.hex
+Development_Mode=
+Processor_Text=PIC16F676
+ToolSuite=CCS
+CCSVersion=5.049
+Compiler=PCM
+
+[Target Data]
+BuildTool=C-COMPILER
+OptionString=+FM
+AdditionalOptionString=
+BuildRequired=1
+FileList=led_run.c
+
+[led_run.c]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+
+[mru-list]
+1=led_run.c
+
+[Windows]
+0=0000 %S 0 0 796 451 3 0
+
+
+[CompilerVersion]
+Fixed=
+
+[ProjectLog]
+Days=2
+D1=28-12-2020
+D1_L=4
+D1_L1=[85666]Project Closed.
+D1_L2=[85666]Project Opened.
+D1_L3=[85678]Started Editing.
+D1_L4=[86006]Stopped Editing.
+D2=29-12-2020
+D2_L=11
+D2_L1=[532]Started Editing.
+D2_L2=[846]Stopped Editing.
+D2_L3=[3516]Started Editing.
+D2_L4=[3816]Stopped Editing.
+D2_L5=[3817]Started Editing.
+D2_L6=[4266]Stopped Editing.
+D2_L7=[4734]Started Editing.
+D2_L8=[6626]Stopped Editing.
+D2_L9=[6733]Started Editing.
+D2_L10=[8736]Stopped Editing.
+TotalEdit=64
+TotalDebug=0
+D2_E=64
+D2_D=0
+D2_L11=[8736]Project Closed.
+
+[Opened Files]
+1=led_run.c
+t1=1
+Count=3
+2=led_run.h
+t2=1
+3=C:\Program Files (x86)\PICC\Devices\16F676.h
+t3=45
+[Units]
+Count=1
+1=led_run (main)
