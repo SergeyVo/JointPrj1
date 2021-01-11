@@ -5,17 +5,18 @@
 
 
 //-----------------------------------------------------Defines-------------------------------------------------------------------------
-#define  FLASH_TIME  80         //ms
+#define  FLASH_TIME  35         //ms
 #define  LEDS        11           //11 leds
 
 //-----------------------------------------------------Functions-----------------------------------------------------------------------
 void                          fvSetUp();               //Setup
-void                          fvSpark(char cLed);
+void                          fvSpark(char cLed, unsigned char ucDelay);
 
 //-----------------------------------------------------Varables------------------------------------------------------------------------
 
 //-----------------------------------------------------Constants-----------------------------------------------------------------------
 char const ccPort[LEDS] = {PIN_A0,PIN_A1,PIN_A2,PIN_A4,PIN_A5,PIN_C0,PIN_C1,PIN_C2,PIN_C3,PIN_C4,PIN_C5};
+#rom 0x2100 = {35, 7}
 
 //-----------------------------------------------------Source--------------------------------------------------------------------------
 
@@ -24,28 +25,37 @@ char const ccPort[LEDS] = {PIN_A0,PIN_A1,PIN_A2,PIN_A4,PIN_A5,PIN_C0,PIN_C1,PIN_
 
 void main()
 {
-char cLedActive = 0;
+char cLedActive;
+unsigned char ucFlashTime;
+unsigned long uiDelay;
 
 fvSetup();
 
-while(TRUE)
-   {
-   restart_wdt();
-   fvSpark(ccPort[cLedActive]);
+ucFlashTime = read_eeprom(0);
+uiDelay = (unsigned long) ucFlashTime * read_eeprom(1);
 
-   if(bit_test(PORTA,3))
+delay_ms(uiDelay);
+if(bit_test(PORTA,3))
+   {
+   cLedActive = 0;
+   while(cLedActive < LEDS)
       {
+      restart_wdt();
+      fvSpark(ccPort[cLedActive], ucFlashTime);
       cLedActive++;
-      if(cLedActive >= LEDS)
-         cLedActive = 0;
-      }
-   else
-      {
-      if(cLedActive <= 0)
-         cLedActive = LEDS;
-      cLedActive--;
       }
    }
+else
+   {
+   cLedActive = LEDS;
+   while(cLedActive > 0)
+      {
+      restart_wdt();
+      cLedActive--;
+      fvSpark(ccPort[cLedActive], ucFlashTime);
+      }   
+   }
+reset_cpu();   
 }
 //=====================================================================================================================================
 
@@ -62,10 +72,10 @@ setup_vref(FALSE);
 //-------------------------------------------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------------------------------------------
-void fvSpark(char cLed)
+void fvSpark(char cLed, unsigned char ucDelay)
 {
 output_low(cLed);
-delay_ms(FLASH_TIME);
+delay_ms(ucDelay);
 output_float(cLed);
 }
 //-------------------------------------------------------------------------------------------------------------------------------------

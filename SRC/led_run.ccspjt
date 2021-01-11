@@ -9,7 +9,7 @@ enabled=0
 chip=1
 D1=
 V1=
-buildcount=19
+buildcount=26
 
 [fileformats]
 forcecoff=1
@@ -60,7 +60,7 @@ AdditionalOptionString=
 Fixed=
 
 [ProjectLog]
-Days=2
+Days=3
 D1=28-12-2020
 D1_L=4
 D1_L1=[85666]Project Closed.
@@ -79,11 +79,23 @@ D2_L7=[4734]Started Editing.
 D2_L8=[6626]Stopped Editing.
 D2_L9=[6733]Started Editing.
 D2_L10=[8736]Stopped Editing.
-TotalEdit=64
+TotalEdit=89
 TotalDebug=0
 D2_E=64
 D2_D=0
 D2_L11=[8736]Project Closed.
+D3=11-01-2021
+D3_L=8
+D3_L1=[44753]Project Opened.
+D3_L2=[44811]Started Editing.
+D3_L3=[45112]Stopped Editing.
+D3_L4=[52382]Started Editing.
+D3_L5=[53445]Stopped Editing.
+D3_L6=[53530]Started Editing.
+D3_L7=[54532]Stopped Editing.
+D3_E=25
+D3_D=0
+D3_L8=[56300]Project Closed.
 
 [Opened Files]
 1=led_run.c
